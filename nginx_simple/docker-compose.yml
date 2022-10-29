@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./:/etc/nginx/conf.d
+      - ./:/var/www/html
+    ports:
+      - '8686:80'
+    restart: unless-stopped
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
