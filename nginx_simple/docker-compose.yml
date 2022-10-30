@@ -10,4 +10,4 @@ services:
       - '8686:80'
     restart: unless-stopped
     extra_hosts:
-    - "host.docker.internal:host-gateway"
+    - "villedepommes.xyz:host-gateway"
