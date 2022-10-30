@@ -14,6 +14,13 @@ sudo iptables -A INPUT -p tcp -s 0.0.0.0/0 --dport 8787 -m conntrack --ctstate N
 sudo iptables -A OUTPUT -p tcp -s 0.0.0.0/0 --sport 8787 -m conntrack --ctstate ESTABLISHED -j ACCEPT
 ```
 
+Not sure, if this step is really needed
+
+```
+sudo iptables -A FORWARD -i docker0 -o eth0 -j ACCEPT
+sudo iptables -A FORWARD -i eth0 -o docker0 -j ACCEPT
+```
+
 ## Testing
 
 **Note, `http://localhost:8686` hits the port exposed by `nginx_simple` which redirects it to `python_simple` @ `8787`**
